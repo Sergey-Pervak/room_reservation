@@ -1,5 +1,5 @@
 # app/core/user.py
-
+import logging
 # Подсказки импортов из стандартной библиотеки
 from typing import Annotated, Optional, Union
 
@@ -81,7 +81,9 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
     ):
         # Вместо print здесь можно настроить отправку письма 
         # или переадресацию пользователя на определённую страницу.
-        print(f'Пользователь {user.email} зарегистрирован.')
+        logging.getLogger('uvicorn').info(
+            f'Пользователь {user.email} зарегистрирован.'
+        )
 
 # Корутина, возвращающая объект класса UserManager.
 async def get_user_manager(user_db=Depends(get_user_db)):

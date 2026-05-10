@@ -110,3 +110,8 @@ uvicorn app.main:app --reload
 ```bash
 uvicorn --help
 ```
+
+Используйте асинхронную библиотеку Aiogoogle
+```bash
+pip install aiogoogle==5.13.0
+```
